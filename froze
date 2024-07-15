@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Dot on Map</title>
+    <style>
+        #map-container {
+            position: relative;
+            display: inline-block;
+        }
+        #map {
+            width: 100%;
+            height: auto;
+        }
+        .dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">Click here to view the map with a random dot</a>
+    <div id="map-container">
+        <img id="map" src="map.jpg" alt="Map">
+    </div>
+    <script>
+        function placeRandomDot() {
+            const mapContainer = document.getElementById('map-container');
+            const map = document.getElementById('map');
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+
+            const mapWidth = map.offsetWidth;
+            const mapHeight = map.offsetHeight;
+
+            const randomX = Math.random() * mapWidth;
+            const randomY = Math.random() * mapHeight;
+
+            dot.style.left = `${randomX}px`;
+            dot.style.top = `${randomY}px`;
+
+            mapContainer.appendChild(dot);
+        }
+
+        window.onload = placeRandomDot;
+    </script>
+</body>
+</html>
